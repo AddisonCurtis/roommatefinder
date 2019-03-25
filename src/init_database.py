@@ -27,3 +27,18 @@ cursor.execute(
 			PRIMARY KEY (id)
 		);
 	""")
+cursor.execute(
+	"""CREATE TABLE listing (
+			id              BIGINT  NOT NULL,
+			listname        TEXT    NOT NULL,
+			description   	TEXT    NOT NULL,
+			bedcount   	    INT		NOT NULL,
+			bathcount       INT		NOT NULL,
+			smoking        	BOOL	NOT NULL,
+			address         TEXT,
+			city            TEXT,
+			state           TEXT,
+			zipcode         varchar(5),
+			PRIMARY KEY (id)
+		);
+	""")	
