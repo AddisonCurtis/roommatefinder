@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en">
+	<head>
+		<title>{% block title %}{% endblock %} - Roommate Find</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="/static/css/style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid"> <a class="navbar-brand" href="index" id="a_1"><b>Roommate Find</b></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"> <a class="nav-link" href="index" id="a_2">Home</a> </li>
+						<li class="nav-item"> <a class="nav-link" href="listings" id="a_3">Listings</a> </li>
+						<li class="nav-item"> <a class="nav-link" href="map" id="a_4">Map</a></li>
+						{% if current_user.is_anonymous %}
+						<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login</a></li>
+						<li class="nav-item"> <a class="nav-link" href="signup" id="a_4">Sign up</a></li>
+						{% else %}
+						<li class="nav-item"> <a class="nav-link" href="profile" id="a_5">Profile</a></li>
+						<li class="nav-item"> <a class="nav-link" href="logout" id="a_5">Logout</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<header id="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 text-center text-uppercase">
+						<h2>Find Your Future Roommate</h2>
+						<img id="img_1">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12"></div>
+				</div>
+			</div>
+		</header>
+		<section class="bg-white">
+		{% block content %}{% endblock %}
+		</section>
+		<footer id="page-footer" class="bg-light">
+			<div class="container">
+				<span class="text-muted">Roommate Find</span>
+			</div>
+		</footer>
+	</body>
+</html>

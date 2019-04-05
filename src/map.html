@@ -1,127 +1,42 @@
-<!DOCTYPE html><html lang="en"><head>
-<!-- Required meta tags -->
-<title>Roommate Find</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<style id="wappler-style">
-	#img_1 {
-		margin-right: 0px;
-		padding-right: 0px;
-		position: sticky;
-		float: none;
-		clear: none
-	}
-	#img_2 {
-		width: 120px;
-		height: 75px
-	}
-	#div_1 {
-		width: 125px
-	}
-	#a_1 {
-		font-weight: bold;
-		color: black;
-	}
-	#a_2 {
-		font-weight: bold;
-		color: black;
-	}
-	#a_3 {
-		font-weight: bold;
-		color: black;
-	}
-	#a_4 {
-		font-weight: bold;
-		color: black;
-	}
-	#a_5 {
-		font-weight: bold;
-		color: black;
-	}
+{% extends 'base.html' %}
+{% block content %}
+	<main id="galleryMain">
+		<h1 class="text-center">Roommate Map View</h1>
+		<div id="googleMap" style="width:80%; height:500px;"></div>
+			<script>
+				function myMap() {
+					var mapProp = {
+						center:new google.maps.LatLng(35.303555,-80.73238),
+						zoom:12, mapTypeId: 'hybrid'
+					};
+					var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+				}
 
-	galleryH1{
-		position: center;
-		padding: 20px;
-	}
-	</style>
-	
-	</head>
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid"> <a class="navbar-brand" href="index" id="a_1"><b>Roommate Find</b></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"> <a class="nav-link" href="index" id="a_2">Home</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="#" id="a_3">Listings</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="map" id="a_4">Map</a>
-					</li>
-					<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login</a>
-					</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<header id="page-header">
-			<div class="container-fluid">
-			<div class="row">
-				<div class="col-12 text-center text-uppercase">
-				<h2>Find Your Future Roommate</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12"></div>
-			</div>
-			</div>
-		</header>
-		
-		<main id="galleryMain">
-			<h1 class="text-center">Roommate Map View</h1>
-			<div id="googleMap" style="width:80%;height:500px;"></div>
-				<script>
-					function myMap() {
-						var mapProp = {
-							center:new google.maps.LatLng(35.303555,-80.73238),
-							zoom:12, mapTypeId: 'hybrid'
-						};
-						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-					}
-					// Zoom to level 15 when clicking on marker
-					google.maps.event.addListener(marker,'click',function() {
-						map.setZoom(15);
-						map.setCenter(marker.getPosition());
-					});
-					// Pan back to the marker if user moves camera after 7 seconds
-					google.maps.event.addListener(marker,'click',function() {
-						var pos = map.getZoom();
-						map.setZoom(15);
-						map.setCenter(marker.getPosition());
-						window.setTimeout(function() {map.setZoom(pos);},7000);
-					});
-					// pops up an information window
-					var roominfo = new google.maps.InfoWindow({
-						content:"Change me to call to the database!"
-					});
+				// Zoom to level 15 when clicking on marker
+				google.maps.event.addListener(marker,'click',function() {
+					map.setZoom(15);
+					map.setCenter(marker.getPosition());
+				});
 
-					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.open(map,marker);
-					});
-				</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ-lCkTz-IeNytuxiQHl2XsF_ImOdWHw0&amp;callback=myMap"></script>
-			<br>
-			<br>
-		</main>
+				// Pan back to the marker if user moves camera after 7 seconds
+				google.maps.event.addListener(marker,'click',function() {
+					var pos = map.getZoom();
+					map.setZoom(15);
+					map.setCenter(marker.getPosition());
+					window.setTimeout(function() {map.setZoom(pos);},7000);
+				});
 
-		<footer id="page-footer" class="bg-light">
-			<div class="container">
-			<span class="text-muted">Copyright Your Name</span>
-			</div>
-		</footer>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
-</html>
+				// pops up an information window
+				var roominfo = new google.maps.InfoWindow({
+					content:"Change me to call to the database!"
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.open(map,marker);
+				});
+			</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ-lCkTz-IeNytuxiQHl2XsF_ImOdWHw0&amp;callback=myMap"></script>
+		<br>
+		<br>
+	</main>
+{% endblock %}
