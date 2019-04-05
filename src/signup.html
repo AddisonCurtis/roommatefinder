@@ -99,59 +99,54 @@
 						<h2>Find Your Future Roommate</h2>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-12"> 
-						<h3 class="text-uppercase">123, Street Name, City</h3>
-					</div>
-				</div>
 			</div>
 		</header>
 		<section class="bg-white" id="section_1">
 			<div>
-				<form>
+				<form action='api/signup', method="POST">
 					<div class="row">
 						<div class="col" id="div_1">
 							<label for="inputEmail4">First Name</label>
-							<input type="text" class="form-control" placeholder="First name" id="firstNameInput">
+							<input type="text" name="firstName" class="form-control" placeholder="John" id="firstNameInput">
 						</div>
 						<div class="col">
 							<label for="inputEmail4">Last Name</label>
-							<input type="text" class="form-control" placeholder="Last name" id="lastNameInput">
+							<input type="text" name="lastName" class="form-control" placeholder="Doe" id="lastNameInput">
 						</div>
 					</div>
 			
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputEmail4">Email</label>
-							<input type="email" class="form-control" id="emailInput" placeholder="Email">
+							<input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@name.com">
 						</div>
 				
 						<div class="form-group col-md-6">
 							<label for="inputPassword4">Password</label>
-							<input type="password" class="form-control" id="passwordInput" placeholder="Password">
+							<input type="password" name="password" class="form-control" id="passwordInput" placeholder="hunter1">
 						</div>
 					</div>
 			
 					<div class="form-group">
 						<label for="inputAddress">Address</label>
-						<input type="text" class="form-control" id="addressInput" placeholder="Addres">
+						<input type="text" name="address" class="form-control" id="addressInput" placeholder="123, Street Name">
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputCity">City</label>
-							<input type="text" class="form-control" id="cityInput">
+							<input type="text" name="city" class="form-control" id="cityInput" placeholder="City">
 						</div>
 						<div class="form-group col-md-4">
 							<label for="inputState">State</label>
-							<select id="stateInput" class="form-control">
+							<select name="state" id="stateInput" class="form-control">
 								<option selected="">Choose...</option>
-								<option>...</option>
+								<option>North Carolina</option>
 							</select>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="zipcodeInput">Zip</label>
-							<input type="text" class="form-control" id="inputZip">
+							<input type="text" name="zipcode" class="form-control" id="inputZip" placeholder="12345">
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Sign Up</button>
