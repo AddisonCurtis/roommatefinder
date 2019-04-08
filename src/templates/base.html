@@ -9,6 +9,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="/static/js/page.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,13 +19,13 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"> <a class="nav-link" href="index" id="a_2">Home</a> </li>
 						<li class="nav-item"> <a class="nav-link" href="map" id="a_4">Map</a></li>
-						{% if current_user.is_authenticated %}
+						{% if current_user.is_anonymous %}
 						<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login</a></li>
 						<li class="nav-item"> <a class="nav-link" href="signup" id="a_4">Sign up</a></li>
 						{% else %}
 						<li class="nav-item"> <a class="nav-link" href="createlisting" id="a_3">New Listing</a> </li>
 						<li class="nav-item"> <a class="nav-link" href="profile" id="a_5">Profile</a></li>
-						<li class="nav-item"> <a class="nav-link" href="logout" id="a_5">Logout</a></li>
+						<li class="nav-item"> <a class="nav-link" href="javascript:void(0)" onclick="logout()" id="logout-button">Logout</a></li>
 						{% endif %}
 					</ul>
 				</div>

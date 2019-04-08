@@ -52,9 +52,8 @@ def staticListingsPage():
 
 ## User stuff
 class User():
-	def __init__(self, userId, active = True):
+	def __init__(self, userId):
 		self.userId = userId
-		self.active = active
 
 	def is_authenticated(self):
 		return True
@@ -66,11 +65,11 @@ class User():
 		return False
 
 	def get_id(self):
-		userRow = cursor.execute("SELECT * FROM user WHERE id = ?", (userId,))
+		userRow = cursor.execute("SELECT * FROM user WHERE id = ?", (self.userId,))
 		if userRow is None:
 			return None
 
-		return unicode(userId)
+		return unicode(userRow[0])
 
 @loginManager.user_loader
 def userLoader(userId):
@@ -130,7 +129,7 @@ def newUser():
 			request.form["state"], request.form["zipcode"])
 			)
 
-	flask_login.login_user(userId)
+	flask_login.login_user(userLoader(userId), remember = True)
 
 	return json.dumps({"success": True}), 200
 
@@ -143,7 +142,7 @@ def login():
 	if user is None:
 		return json.dumps({"success": False}), 400
 	
-	flask_login.login_user(user.get_id())
+	flask_login.login_user(user, remember = True)
 	return json.dumps({"success": True}), 200
 
 @app.route("/api/logout", methods=["POST"])
@@ -155,7 +154,6 @@ def logout():
 @app.route("/api/createlisting", methods=["POST"])
 @flask_login.login_required
 def createListing():
-	print(current_user)
 	return 200
 	#TODO: Actually check if the info given is valid
 	cursor.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
