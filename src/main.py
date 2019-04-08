@@ -7,13 +7,12 @@ from flask import Flask, request, render_template, redirect, url_for, jsonify
 from flask_cors import CORS
 import flask_login
 
-app = Flask(__name__, template_folder=".")
+app = Flask(__name__)
 app.secret_key = "placeholder key" # TODO: Load secret key from a config file that isn"t stored in the repo
 CORS(app)
 sqlConnection = sql.connect("app.db", check_same_thread=False, isolation_level=None)
 cursor = sqlConnection.cursor()
 loginManager = flask_login.LoginManager(app)
-
 
 ## Static web pages
 @app.route("/")
@@ -52,18 +51,34 @@ def staticListingsPage():
 	return render_template("create_listing.html")
 
 ## User stuff
-class User(flask_login.UserMixin):
-	pass
+class User():
+	def __init__(self, userId, active = True):
+		self.userId = userId
+		self.active = active
+
+	def is_authenticated(self):
+		return True
+
+	def is_active(self):
+		return True
+
+	def is_anonymous(self):
+		return False
+
+	def get_id(self):
+		userRow = cursor.execute("SELECT * FROM user WHERE id = ?", (userId,))
+		if userRow is None:
+			return None
+
+		return unicode(userId)
 
 @loginManager.user_loader
 def userLoader(userId):
 	userRow = cursor.execute("SELECT * FROM user WHERE id = ?", (userId,))
 	if userRow is None:
-		return
+		return None
 
-	user = User()
-	user.id = userId
-	return user
+	return User(userId)
 
 @loginManager.request_loader
 def requestLoader(req):
@@ -71,16 +86,17 @@ def requestLoader(req):
 	if email is None:
 		return None
 
-	userRow = cursor.execute("SELECT id, password_hash, salt FROM user WHERE email = ?", (email,))
+	cursor.execute("SELECT id, password_hash, salt FROM user WHERE email = ?", (email,))
+	userRow = cursor.fetchone()
 	if userRow is None:
 		return None
 
-	user = User()
-	user.id = userRow["id"]
+	user = User(userRow[0])
 
-	passwordHash = hashlib.pbkdf2_hmac("sha256", req.form["password"].encode(), salt, 10000)
+	passwordHash = hashlib.pbkdf2_hmac("sha256", req.form["password"].encode(), userRow[2], 10000)
 
-	user.is_authenticated = passwordHash == userRow["password_hash"]
+	if passwordHash != userRow[1]:
+		return None
 
 	return user
 
@@ -114,7 +130,7 @@ def newUser():
 			request.form["state"], request.form["zipcode"])
 			)
 
-	flask_login.login_user(userLoader(userId))
+	flask_login.login_user(userId)
 
 	return json.dumps({"success": True}), 200
 
@@ -124,17 +140,29 @@ def login():
 		return json.dumps({"success": True}), 200
 
 	user = requestLoader(request)
-	if user is not None:
-		flask_login.login_user(user)
-		return json.dumps({"success": True}), 200
-
-	return json.dumps({"success": True}), 400
+	if user is None:
+		return json.dumps({"success": False}), 400
+	
+	flask_login.login_user(user.get_id())
+	return json.dumps({"success": True}), 200
 
 @app.route("/api/logout", methods=["POST"])
 @flask_login.login_required
 def logout():
 	flask_login.logout_user()
 	return json.dumps({"success": True}), 200
+
+@app.route("/api/createlisting", methods=["POST"])
+@flask_login.login_required
+def createListing():
+	print(current_user)
+	return 200
+	#TODO: Actually check if the info given is valid
+	cursor.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			(userId , passwordHash, salt, firstName, lastName,
+			email, request.form["address"], request.form["city"],
+			request.form["state"], request.form["zipcode"])
+			)
 
 if __name__ == "__main__":
 	app.run()

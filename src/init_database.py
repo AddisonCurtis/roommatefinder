@@ -33,6 +33,7 @@ cursor.execute(
 cursor.execute(
 	"""CREATE TABLE listing (
 			id              BIGINT  NOT NULL,
+			manager_user_id BIGINT  NOT NULL,
 			listname        TEXT    NOT NULL,
 			description   	TEXT    NOT NULL,
 			price			INT		NOT NULL,

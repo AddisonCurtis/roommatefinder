@@ -18,7 +18,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"> <a class="nav-link" href="index" id="a_2">Home</a> </li>
 						<li class="nav-item"> <a class="nav-link" href="map" id="a_4">Map</a></li>
-						{% if current_user.is_anonymous %}
+						{% if current_user.is_authenticated %}
 						<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login</a></li>
 						<li class="nav-item"> <a class="nav-link" href="signup" id="a_4">Sign up</a></li>
 						{% else %}
