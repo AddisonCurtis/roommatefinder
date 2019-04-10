@@ -3,61 +3,61 @@
 	<main>
 		<div class="d-flex">
 			<ul class="list-group"></ul>	
-				<form>
+				<form action="/api/createlisting", method="POST">
 					<div class="row">
 						<div class="col" id="div_1">
-							<label for="inputEmail4">Listing Name</label>
-							<input type="text" class="form-control" placeholder="Listing" id="listing_name">
+							<label for="listingName">Listing Name</label>
+							<input type="text" class="form-control" placeholder="" name="name">
 						</div>
 							<div class="col">
-								<label for="inputEmail4">Description</label>
-								<input type="text" class="form-control" placeholder="..." id="listing_description">
+								<label for="listingDescription">Description</label>
+								<input type="text" class="form-control" placeholder="" name="description">
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputEmail4">Price</label>
-								<input type="email" class="form-control" id="listing_price" placeholder="0">
+								<label for="listingPrice">Price</label>
+								<input type="number" class="form-control" name="price" placeholder="Per month">
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputPassword4">Bedrooms</label>
-								<input type="password" class="form-control" id="listing_bedcount" placeholder="1">
+								<label for="listingBedcount">Bedrooms</label>
+								<input type="number" class="form-control" name="bedcount" placeholder="1">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputAddress">Bathrooms</label>
-							<input type="text" class="form-control" id="listing_bathcount" placeholder="1">
+							<label for="listingBathcount">Bathrooms</label>
+							<input type="number" class="form-control" name="bathcount" placeholder="1">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputCity">Address</label>
-								<input type="text" class="form-control" id="listing_address">
+								<label for="listingAddress">Address</label>
+								<input type="text" class="form-control" name="address" placeholder="123 Street Name">
 							</div>
 							<div class="form-group col-md-6">
 								<label for="inputCity">City</label>
-								<input type="text" class="form-control" id="listing_city">
+								<input type="text" class="form-control" name="city" placeholder="City">
 							</div>
 							<div class="form-group col-md-4">
 								<label for="inputState">State</label>
-								<select id="inputState" class="form-control">
+								<select name="state" class="form-control">
 									<option selected="">Choose...</option>
-									<option>...</option>
+									<option>NC</option>
 								</select>
 							</div>
 							<div class="form-group col-md-2">
 								<label for="inputZip">Zip</label>
-								<input type="text" class="form-control" id="inputZip">
+								<input type="text" class="form-control" name="zipcode">
 							</div>
 							<div class="form-group col-md-2">
 								<label for="inputZip">Smoking</label>
-								<input type="checkbox" id="listing_smoking" value="Smoking">
+								<input type="checkbox" name="smoking" value="Smoking">
 							</div>
 							<div class="form-group col-md-2">
 								<label for="inputZip">Internet</label>
-								<input type="checkbox" id="listing_internet" value="Internet">
+								<input type="checkbox" name="internet" value="Internet">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Edit Profile</button>
+						<button type="submit" class="btn btn-primary">Create Listing</button>
 					</form>    
 				</div>
 			<img>
