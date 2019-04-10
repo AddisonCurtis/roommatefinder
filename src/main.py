@@ -57,13 +57,16 @@ class User(flask_login.UserMixin):
 	def __init__(self, userId = None):
 		self.userId = userId
 
+	
 	def get_id(self):
+		print("called")
 		cursor.execute("SELECT * FROM user WHERE id = ?", (self.userId,))
 		userRow = cursor.fetchone()
 		if userRow is None:
 			return None
 
 		return str(userRow[0])
+		
 
 @loginManager.user_loader
 def userLoader(userId):
@@ -71,9 +74,7 @@ def userLoader(userId):
 	if userRow is None:
 		return None
 
-	user = User(userId)
-
-	return User()
+	return User(userId)
 
 @loginManager.request_loader
 def requestLoader(req):
@@ -150,11 +151,14 @@ def logout():
 @app.route("/api/createlisting", methods=["POST"])
 @flask_login.login_required
 def createListing():
-	cursor.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-			(userId , passwordHash, salt, firstName, lastName,
-			email, request.form["address"], request.form["city"],
-			request.form["state"], request.form["zipcode"])
+	print(flask_login.current_user.get_id())
+	cursor.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			(random.getrandbits(63) , flask_login.current_user.get_id(), request.form["name"], request.form["description"], request.form["price"],
+			request.form["bedcount"], request.form["bathcount"], request.form["address"],
+			request.form["city"], request.form["state"], request.form["zipcode"],
+			request.form["smoking"], request.form["internet"])
 			)
+	return json.dumps({"success": True}), 200
 
 if __name__ == "__main__":
 	app.run()
