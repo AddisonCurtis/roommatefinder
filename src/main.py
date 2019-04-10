@@ -59,7 +59,6 @@ class User(flask_login.UserMixin):
 
 	
 	def get_id(self):
-		print("called")
 		cursor.execute("SELECT * FROM user WHERE id = ?", (self.userId,))
 		userRow = cursor.fetchone()
 		if userRow is None:
@@ -151,7 +150,7 @@ def logout():
 @app.route("/api/createlisting", methods=["POST"])
 @flask_login.login_required
 def createListing():
-	print(flask_login.current_user.get_id())
+
 	cursor.execute("INSERT INTO listing VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 			(random.getrandbits(63) , flask_login.current_user.get_id(), request.form["name"], request.form["description"], request.form["price"],
 			request.form["bedcount"], request.form["bathcount"], request.form["address"],
