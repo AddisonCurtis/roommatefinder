@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-	<main>
-		<div class="d-flex">
-			<ul class="list-group"></ul>	
+
+	<div class="ml-5">
+		<a href="profile" class="btn btn-info mb-5 ml-5" role="button">< Back to Profile</a>
+	</div>
+		<div class="d-flex justify-content-center">
+			<ul class="list-group"></ul>		
 				<form action="/api/createlisting", method="POST">
-					<div class="row">
+					<div class="form-row">
 						<div class="col" id="div_1">
 							<label for="listingName">Listing Name</label>
 							<input type="text" class="form-control" placeholder="" name="name">
@@ -48,13 +51,13 @@
 								<label for="inputZip">Zip</label>
 								<input type="text" class="form-control" name="zipcode">
 							</div>
-							<div class="form-group col-md-2">
-								<label for="inputZip">Smoking</label>
-								<input type="checkbox" name="smoking" value="Smoking">
+							<div class="form-group col-md-2 ml-2 mt-4">
+								<label for="inputZip" class="mt-2">Smoking</label>
+								<input class="mt-2" type="checkbox" name="smoking" value="Smoking">
 							</div>
-							<div class="form-group col-md-2">
-								<label for="inputZip">Internet</label>
-								<input type="checkbox" name="internet" value="Internet">
+							<div class="form-group col-md-2 mt-4">
+								<label for="inputZip" class="mt-2">Internet</label>
+								<input class="mt-2" type="checkbox" name="internet" value="Internet">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary">Create Listing</button>
@@ -62,5 +65,4 @@
 				</div>
 			<img>
 		</div>
-	</main>
 {% endblock %}
