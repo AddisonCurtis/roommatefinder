@@ -18,10 +18,11 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"> <a class="nav-link" href="index" id="a_2">Home</a> </li>
+						<li class="nav-item"> <a class="nav-link" href="all_listings" id="a_3">View Listings</a> </li>
 						<li class="nav-item"> <a class="nav-link" href="map" id="a_4">Map</a></li>
 						{% if current_user.is_anonymous %}
-						<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login</a></li>
-						<li class="nav-item"> <a class="nav-link" href="signup" id="a_4">Sign up</a></li>
+						<li class="nav-item"> <a class="nav-link" href="login" id="a_5">Login/Signup</a></li>
+						
 						{% else %}
 						<li class="nav-item"> <a class="nav-link" href="createlisting" id="a_3">New Listing</a> </li>
 						<li class="nav-item"> <a class="nav-link" href="profile" id="a_5">Profile</a></li>
@@ -47,10 +48,15 @@
 		<section class="bg-white">
 		{% block content %}{% endblock %}
 		</section>
-		<footer id="page-footer" class="bg-light">
-			<div class="container">
-				<span class="text-muted">Roommate Find</span>
-			</div>
-		</footer>
+		
+		<br>
+		<br>
+	
+			<footer id="page-footer" class="bg-light">
+				<div class="container">
+					<span class="text-muted">Roommate Find</span>
+				</div>
+			</footer>
+	
 	</body>
 </html>

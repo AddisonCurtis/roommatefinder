@@ -2,39 +2,48 @@
 {% block content %}
 	<main id="galleryMain">
 		<h1 class="text-center">Roommate Map View</h1>
-		<div id="googleMap" style="width:80%; height:500px;"></div>
-			<script>
-				function myMap() {
-					var mapProp = {
-						center:new google.maps.LatLng(35.303555,-80.73238),
-						zoom:12, mapTypeId: 'hybrid'
-					};
-					var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-				}
+		<div class="ml-5">
+			<div class="ml-5">
+				<div class="ml-5">
+					<div  class="ml-5" id="googleMap" style="width:60%; height:500px"></div>
+						<div class="ml-5">
+							
+								<script>
+									function myMap() {
+										var mapProp = {
+											center:new google.maps.LatLng(35.303555,-80.73238),
+											zoom:12, mapTypeId: 'hybrid'
+										};
+										var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+									}
 
-				// Zoom to level 15 when clicking on marker
-				google.maps.event.addListener(marker,'click',function() {
-					map.setZoom(15);
-					map.setCenter(marker.getPosition());
-				});
+									// Zoom to level 15 when clicking on marker
+									google.maps.event.addListener(marker,'click',function() {
+										map.setZoom(15);
+										map.setCenter(marker.getPosition());
+									});
 
-				// Pan back to the marker if user moves camera after 7 seconds
-				google.maps.event.addListener(marker,'click',function() {
-					var pos = map.getZoom();
-					map.setZoom(15);
-					map.setCenter(marker.getPosition());
-					window.setTimeout(function() {map.setZoom(pos);},7000);
-				});
+									// Pan back to the marker if user moves camera after 7 seconds
+									google.maps.event.addListener(marker,'click',function() {
+										var pos = map.getZoom();
+										map.setZoom(15);
+										map.setCenter(marker.getPosition());
+										window.setTimeout(function() {map.setZoom(pos);},7000);
+									});
 
-				// pops up an information window
-				var roominfo = new google.maps.InfoWindow({
-					content:"Change me to call to the database!"
-				});
+									// pops up an information window
+									var roominfo = new google.maps.InfoWindow({
+										content:"Change me to call to the database!"
+									});
 
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.open(map,marker);
-				});
-			</script>
+									google.maps.event.addListener(marker, 'click', function() {
+										infowindow.open(map,marker);
+									});
+								</script>
+						</div>
+				</div>
+			</div>
+		</div>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ-lCkTz-IeNytuxiQHl2XsF_ImOdWHw0&amp;callback=myMap"></script>
 		<br>
 		<br>

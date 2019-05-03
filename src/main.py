@@ -48,6 +48,10 @@ def staticMapPage():
 def staticProfilePage():
 	return render_template("profile.html")
 
+@app.route("/all_listings")
+def staticAllListingsPage():
+	return render_template("listings.html")
+	
 @app.route("/createlisting")
 def staticListingsPage():
 	return render_template("create_listing.html")

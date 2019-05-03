@@ -1,28 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-12 col-md-4">
-				<div class="card"> <img class="card-img-top" src="http://via.placeholder.com/800x533" alt="Card image cap">
-					<div class="card-body text-center">
-						<h5 class="card-title">Listing 1</h5>
-					</div>
+				<div class="card"> 
+					<img class="card-img-top" src="/static/images/listings.jpg" alt="listings" style="height:240px; width:348px">
+					<a href="all_listings" class="card-body text-center">
+						<h5 class="card-title">View Listings</h5>
+					</a>
 				</div>
 			</div>
 			<div class="col-12 col-sm-12 col-md-4">
-				<div class="card"> <img class="card-img-top" src="http://via.placeholder.com/800x533" alt="Card image cap">
-					<div class="card-body text-center">
-						<h5 class="card-title">Listing 2</h5>
-					</div>
+				<div class="card"> 
+					<img class="card-img-top" src="/static/images/login.jpg" alt="login" style="height:240px; width:330px">
+					<a href="login" class="card-body text-center">
+						<h5 class="card-title">Login To Your Account</h5>
+					</a>
 				</div>
 			</div>
-			<div class="col-12 col-sm-12 col-md-4">
-				<div class="card"> <img class="card-img-top" src="http://via.placeholder.com/800x533" alt="Card image cap">
-					<div class="card-body text-center">
-						<h5 class="card-title">Listing 3</h5>
-					</div>
+			<div class="col">
+				<div class="card"> 
+					<img class="card-img-top" src="/static/images/signup.jpg" alt="signup" style="height:240px">
+					<a href="signup" class="card-body text-center">
+						<h5 class="card-title">Signup To Post A Listing</h5>
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	
+	<br>
+	<br>
 {% endblock %}
