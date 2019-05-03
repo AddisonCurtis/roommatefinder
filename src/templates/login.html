@@ -1,27 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div class="container">
-		<div class="col-md-8 ml-5">
-			<div class="ml-5">
-					<form class="ml-5" action='api/login', method="POST">
-						
-							<div class="form-group col-md-6">
+		<div class="d-flex justify-content-center">
+			<div class="form-control pl-5 pr-5 pt-5 pb-5" style="width:400px; background-color:lightblue">
+					<form action='api/login', method="POST">
+						<div class="form-row">
+							<div class="form-group col-md-12">
 								<label for="inputEmail4">Email</label>
 								<input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@name.com">
 							</div>
-					
-							<div class="form-group col-md-6">
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
 								<label for="inputPassword4">Password</label>
 								<input type="password" name="password" class="form-control" id="passwordInput">
 							</div>
-					
-						<button type="submit" class="btn btn-primary ml-3 mb-3">Log in</button>
-						
+						</div>
+						<div class="form-row mb-3">
+							<div class="form-group col-md-12">
+								<button type="submit" class="btn btn-success">Log in</button>
+							</div>
+						</div>
 						<a href="signup">
-							<p class="ml-3">Dont have an account? sign up here</p>
+							<p>Dont have an account? sign up here</p>
 						</a>
 					</form>
 			</div>
 		</div>
-	</div>
 {% endblock %}

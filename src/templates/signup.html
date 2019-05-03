@@ -1,58 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
-	<div class="ml-5">
+	<div class="d-flex justify-content-center">
+	<div class="form-control pl-5 pr-5 pt-5 pb-5" style="width:600px; background-color:lightblue">
 		<form action='api/signup', method="POST">
-			<div class="form-row ml-5 mr-5 mb-3">
-				<div class="form-group col-md-4">
+			<div class="form-row">
+				<div class="form-group col-md-6">
 					<label for="inputEmail4">First Name</label>
 					<input type="text" name="firstName" class="form-control" placeholder="John" id="firstNameInput">
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputEmail4">Last Name</label>
 					<input type="text" name="lastName" class="form-control" placeholder="Doe" id="lastNameInput">
 				</div>
 			</div>
 	
-			<div class="form-row ml-5 mr-5">
-				<div class="form-group col-md-4">
+			<div class="form-row">
+				<div class="form-group col-md-6">
 					<label for="inputEmail4">Email</label>
 					<input type="email" name="email" class="form-control" id="emailInput" placeholder="john.doe@name.com">
 				</div>
 		
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-6">
 					<label for="inputPassword4">Password</label>
 					<input type="password" name="password" class="form-control" id="passwordInput" placeholder="hunter1">
 				</div>
 			</div>
 	
-			<div class="form-row ml-4 ml-5">
-				<div class="form-group col-md-4">
+			<div class="form-row">
+				<div class="form-group col-md-12">
 					<label for="inputAddress">Address</label>
 					<input type="text" name="address" class="form-control" id="addressInput" placeholder="123, Street Name">
 				</div>
 			</div>
 			
 			
-			<div class="form-row ml-5 mr-5">
-				<div class="form-group col-md-3">
+			<div class="form-row">
+				<div class="form-group col-md-4">
 					<label for="inputCity">City</label>
 					<input type="text" name="city" class="form-control" id="cityInput" placeholder="City">
 				</div>
-				<div class="form-group col-md-2">
+				<div class="form-group col-md-4">
 					<label for="inputState">State</label>
 					<select name="state" id="stateInput" class="form-control">
 						<option selected="">Choose...</option>
 						<option>North Carolina</option>
 					</select>
 				</div>
-				<div class="form-group col-md-1">
+				<div class="form-group col-md-4">
 					<label for="zipcodeInput">Zip</label>
 					<input type="text" name="zipcode" class="form-control" id="inputZip" placeholder="12345">
 				</div>
 			</div>
-			<div class="ml-2">
-				<button type="submit" class="btn btn-primary ml-5">Sign Up</button>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+				<button type="submit" class="btn btn-success">Sign Up</button>
+				</div>
 			</div>
 		</form>
+	</div>
 	</div>
 {% endblock %}

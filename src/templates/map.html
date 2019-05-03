@@ -2,12 +2,8 @@
 {% block content %}
 	<main id="galleryMain">
 		<h1 class="text-center">Roommate Map View</h1>
-		<div class="ml-5">
-			<div class="ml-5">
-				<div class="ml-5">
-					<div  class="ml-5" id="googleMap" style="width:60%; height:500px"></div>
-						<div class="ml-5">
-							
+		<div class="d-flex justify-content-center">	
+					<div id="googleMap" style="width:60%; height:500px"></div>
 								<script>
 									function myMap() {
 										var mapProp = {
@@ -40,9 +36,6 @@
 										infowindow.open(map,marker);
 									});
 								</script>
-						</div>
-				</div>
-			</div>
 		</div>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ-lCkTz-IeNytuxiQHl2XsF_ImOdWHw0&amp;callback=myMap"></script>
 		<br>
